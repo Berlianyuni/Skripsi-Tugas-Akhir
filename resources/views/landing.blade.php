@@ -1,5 +1,5 @@
 @extends('layouts.masterLanding')
-@section('title', 'SPK | Landing')
+@section('title', 'Landing')
 @section('content')
 
     <body>
