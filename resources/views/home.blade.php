@@ -135,7 +135,7 @@
                                 </div>
                             </div>
                             <span class="text-white d-block f-18 f-w-500 my-2">Perhitungan
-                                <span><i class="fa-solid fa-caret-right px-3"></i>SPK - TREND MOMENT
+                                <span><i class="fa-solid fa-caret-right px-3"></i>TREND MOMENT
                                 </span>
                         </div>
                     </div>

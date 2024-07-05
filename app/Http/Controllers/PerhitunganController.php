@@ -373,12 +373,24 @@ class PerhitunganController extends Controller
             return $jumlahAbsolutError;
         }
 
-        function MAPE($yAktual, $yPrediksi, $n)
-        {
-            $jumlahAbsolutePercentageError = ($yAktual / $yPrediksi) * 100;
+        // function MAPE($yAktual, $yPrediksi, $n)
+        // {
+        //     $jumlahAbsolutePercentageError = ($yAktual / $yPrediksi) * 100;
 
-            return $jumlahAbsolutePercentageError;
+        //     return $jumlahAbsolutePercentageError;
+        // }
+        function MAPE($yAktual, $yPrediksi) {
+            // Periksa jika yAktual adalah nol untuk menghindari pembagian oleh nol
+            if ($yAktual == 0) {
+                return 0;
+            }
+            
+            // Hitung kesalahan absolut persentase
+            $absolutePercentageError = abs(($yAktual - $yPrediksi) / $yAktual) * 100;
+        
+            return $absolutePercentageError;
         }
+
 
         for ($i = 0; $i < $nBulanPrediksi; $i++) {
 

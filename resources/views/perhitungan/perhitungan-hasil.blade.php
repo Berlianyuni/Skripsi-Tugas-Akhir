@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'KMEANS | Hasil Perhitungan KMEANS')
+@section('title', 'Hasil Perhitungan Trend Moment')
 @section('content')
 
     <!-- [ Main Content ] start -->
@@ -30,7 +30,7 @@
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-header text-center">
-                            <h5>Hasil Perhitungan K-MEANS Clustering </h5>
+                            <h5>Hasil Perhitungan Trend Moment </h5>
                             <div class="text-start">
                                 <a href="/cetak-hasil" target="_blank" class="btn btn-sm bg-blue-100">Cetak / Export PDF
                                     <i class="fa-solid fa-print ms-2"></i>

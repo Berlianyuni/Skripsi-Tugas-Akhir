@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'SPK | Terms')
+@section('title', 'Trend Moment Terms')
 @section('content')
 
     <!-- [ Main Content ] start -->

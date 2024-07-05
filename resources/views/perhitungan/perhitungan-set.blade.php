@@ -79,18 +79,18 @@
                                 <li class="h4">
                                     <span class="text-primary fw-bold">MAD
                                     </span>
-                                    <span class="fw-bold"> : {{ last($ramalan_penjualan['MAD']) }} </span>
+                                    <span class="fw-bold"> : {{ number_format(last($ramalan_penjualan['MAD']), 2) }} </span>
                                 </li>
                                 <li class="h4">
                                     <span class="text-primary fw-bold">MSE
                                     </span>
-                                    <span class="fw-bold"> : {{ last($ramalan_penjualan['MSE']) }}
+                                    <span class="fw-bold"> : {{ number_format(last($ramalan_penjualan['MSE']), 2) }}
                                     </span>
                                 </li>
                                 <li class="h4">
                                     <span class="text-primary fw-bold">MAPE
                                     </span>
-                                    <span class="fw-bold"> : {{ last($ramalan_penjualan['MAPE']) }}
+                                    <span class="fw-bold"> : {{ number_format(last($ramalan_penjualan['MAPE']), 2) }}%
                                     </span>
                                 </li>
 
