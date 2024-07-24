@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'WASPAS | Tambah Akun')
+@section('title', ' Tambah Akun')
 @section('content')
 
     <div class="page-wrapper">

@@ -24,7 +24,7 @@
         <header id="header" class="fixed-top">
             <div class="container d-flex align-items-center">
 
-                <h1 class="logo me-auto"><a href="/">SPK | TM</a></h1>
+                <h1 class="logo me-auto"><a href="/">Trend Moment</a></h1>
                 <!-- Uncomment below if you prefer to use an image logo -->
                 {{-- <a href="index.html" class="logo me-auto"><img src="{{ asset('landing') }}/dist/assets/img/logo.png"
                         alt="" class="img-fluid"></a> --}}
@@ -33,9 +33,6 @@
                     <ul>
                         <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
                         {{-- <li><a class="nav-link scrollto" href="#about">About</a></li> --}}
-                        <li><a class="nav-link scrollto" href="#services">Kerangka Kerja & Pustaka</a></li>
-                        {{-- <li><a class="nav-link scrollto" href="#departments">Departments</a></li>
-                        <li><a class="nav-link scrollto" href="#doctors">Doctors</a></li> --}}
                         <li><a class="nav-link scrollto" href="#contact">Hubungi Kami</a></li>
                         {{-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
@@ -70,7 +67,7 @@
             <div class="container">
                 {{-- <h1 class="text-center text-light">Selamat Datang</i></h1> --}}
                 <h2 class="col-lg-12 col-sm-12 text-light text-center fw-bold" style="font-size:40px;">PENERAPAN METODE
-                    TREND MOMENT <br> PADA PENJUALAN SEAFOOD BERBASIS WEB <br> UD. DELYMA JAYA
+                    TREND MOMENT <br> PADA PERAMALAN PENJUALAN BERBASIS WEB <br> UD. SUMBER REJEKI
                 </h2>
                 <div class="text-center my-auto">
                     <a href="/login" class="btn-get-started scrollto">Login</a>
@@ -92,11 +89,11 @@
                                     Persaingan global membuat perekonomian di Indonesia mengalami perkembangan pesat. Banyak
                                     bermunculan Usaha Mikro Kecil dan Menengah (UMKM) ditengah perubahan ekonomi di
                                     Indonesia. Perkembangan UMKM yang semakin meningkat dapat meningkatkan perekonomian
-                                    daerah dan mengurangi pengangguran. UD Delyma Jaya adalah sebuah perusahaan yang
-                                    bergerak di bidang penjualan seafood, yang mana jumlah permintaan barangnya sangat
-                                    dipengaruhi oleh faktor musim dan kondisi cuaca. Oleh karena itu, untuk mengoptimalkan
+                                    daerah dan mengurangi pengangguran. UD Sumber Rejeki adalah sebuah perusahaan yang
+                                    bergerak di bidang penjualan kebutuhan rumah tangga, yang mana jumlah permintaan barangnya sangat
+                                    dipengaruhi oleh faktor musim. Oleh karena itu, untuk mengoptimalkan
                                     penjualan, perusahaan tersebut perlu melakukan peramalan permintaan barang yang akurat.
-                                    Dari tahun ke tahun konsumen UD Delyma Jaya semakin meningkat dan produk Seafood yang
+                                    Dari tahun ke tahun konsumen UD Sumber Rejeki semakin meningkat dan barang yang
                                     dijual belikan semakin beraneka ragam dari kebutuhan sehari-hari. Permintaan pasar yang
                                     stabil dan dapat diprediksi akan membantu perusahaan dalam mengoptimalkan stok
                                     persediaan, meningkatkan efisiensi operasional, dan mengurangi biaya produksi.
@@ -231,58 +228,6 @@
 
                 </div>
             </section><!-- End Counts Section --> --}}
-
-            <!-- ======= Services Section ======= -->
-            <section id="services" class="services">
-                <div class="container">
-
-                    <div class="section-title">
-                        <h2>Kerangka Kerja & Pustaka</h2>
-                        <p>Developer memprioritaskan kinerja <i>back-end</i> yang cepat dan <i>front-end</i> yang responsif
-                            dengan
-                            menggunakan teknologi terpopuler pada tiap - tiap aspek sistem.</p>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-                            <div class="icon-box">
-                                <a href="https://laravel.com/" class="icon"><i class="fa-brands fa-laravel"
-                                        style="font-size: 40px;"></i></a>
-                                <h4><a href="https://laravel.com/">Laravel 9</a></h4>
-                                <p>Laravel adalah kerangka kerja PHP open source yang
-                                    mengikuti pola desain model-view-controller. Laravel menggunakan kembali komponen
-                                    kerangka kerja berbeda yang ada untuk membantu dalam membuat aplikasi web yang dirancang
-                                    lebih terstruktur dan pragmatis..</p>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
-                            <div class="icon-box">
-                                <a href="https://getbootstrap.com/" class="icon"><i class="fa-brands fa-bootstrap"
-                                        style="font-size: 40px;"></i></a>
-                                <h4><a href="https://getbootstrap.com/">Bootstrap 5</a></h4>
-                                <p>Bootstrap adalah kerangka pengembangan front-end open source gratis
-                                    untuk pembuatan situs web dan aplikasi web. Dirancang untuk memungkinkan pengembangan
-                                    responsif situs web yang mengutamakan seluler, Bootstrap menyediakan kumpulan sintaks
-                                    untuk desain template.</p>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
-                            <div class="icon-box">
-                                <a href="https://berrydashboard.io/" class="icon"><i class="fa-brands fa-react"
-                                        style="font-size: 40px;"></i></a>
-                                <h4><a href="https://berrydashboard.io/">Berry - React</a></h4>
-                                <p>Berry - React adalah template dasbor dinamis serta responsif yang dirancang untuk
-                                    memberikan
-                                    kinerja yang optimal untuk panel admin Anda.</p>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-            </section><!-- End Services Section -->
 
             <!-- ======= Appointment Section ======= -->
             {{-- <section id="appointment" class="appointment section-bg">
@@ -886,14 +831,16 @@
                                 <div class="address">
                                     {{-- <h4>Location:</h4> --}}
                                     <h4 class="fa-solid fa-location-dot" style="font-size: 40px;color:#1977CC;"></h4>
-                                    <p>example</p>
+                                    <p>RT 01 RW 01 Dusun. Sumberjo, Desa. Olak - Alen, 
+                                        Kecamatan. Selorejo, Kabupaten. Blitar, Jawa Timur 66192
+                                    </p>
                                 </div>
 
                                 <div class="email">
                                     {{-- <i class="bi bi-envelope"></i> --}}
                                     {{-- <i class="fa-regular fa-envelope-open"></i> --}}
                                     <h4 class="fa-regular fa-envelope" style="font-size: 40px;color:#1977CC;"></h4>
-                                    <p>info@example.com</p>
+                                    <p>SumberRejeki@gamil.com</p>
                                 </div>
 
                                 <div class="phone">
@@ -901,7 +848,7 @@
                                     {{-- <i class="fa-solid fa-envelope"></i> --}}
                                     {{-- <i class="fa-solid fa-phone"></i> --}}
                                     <h4 class="fa-solid fa-phone" style="font-size: 40px;color:#1977CC;"></h4>
-                                    <p>+123 456 789 101</p>
+                                    <p>085785111129</p>
                                 </div>
 
                             </div>

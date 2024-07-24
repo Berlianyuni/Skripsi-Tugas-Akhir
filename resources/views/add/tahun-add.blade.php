@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'SPK | Tambah Tahun')
+@section('title', 'Tambah Tahun')
 @section('content')
 
     <!-- [ Main Content ] start -->

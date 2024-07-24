@@ -5,7 +5,7 @@
             <a href="/home" class="b-brand">
                 <!-- ========   Change your logo from here   ============ -->
                 {{-- <img src="{{ asset('template') }}/dist/assets/images/logo-dark.svg" alt="" class="logo logo-lg" /> --}}
-                <span class="fw-bold h3 text-gray-700">SPK | TM</span>
+                <span class="fw-bold h3 text-gray-700">Trend Moment</span>
             </a>
         </div>
         <div class="navbar-content">

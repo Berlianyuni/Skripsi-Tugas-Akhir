@@ -27,7 +27,7 @@ class PerhitunganController extends Controller
         $barang = Barang::get();
         $tahun = Tahun::get();
         $bulan = Bulan::get();
-        $satuan = ['Gram', 'Ons', 'Kilogram', 'Ton'];
+        $satuan = ['pcs', 'lusin', 'Kilogram'];
 
         $bool_objects = json_decode(json_encode([
             ['value' => 0, 'nama' => 'Tidak'],
@@ -149,39 +149,25 @@ class PerhitunganController extends Controller
         //         ) {
 
         //             //konversi satuan
-        //             if ($request->konversi_satuan == "Gram") {
-        //                 if ($value_barang_get->satuan == "Ons") {
+        //             if ($request->konversi_satuan == "pcs") {
+        //                 if ($value_barang_get->satuan == "lusin") {
         //                     $value_barang_get->jumlah = $this->ounceToGram($value_barang_get->jumlah);
         //                 } elseif ($value_barang_get->satuan == "Kilogram") {
         //                     $value_barang_get->jumlah = $this->kilogramToGram($value_barang_get->jumlah);
-        //                 } elseif ($value_barang_get->satuan == "Ton") {
-        //                     $value_barang_get->jumlah = $this->tonToGram($value_barang_get->jumlah);
-        //                 }
-        //             }elseif ($request->konversi_satuan == "Ons") {
-        //                 if ($value_barang_get->satuan == "Gram") {
+        //                 } 
+
+        //             }elseif ($request->konversi_satuan == "lusin") {
+        //                 if ($value_barang_get->satuan == "pcs") {
         //                     $value_barang_get->jumlah = $this->gramToOunce($value_barang_get->jumlah); 
         //                 }elseif ($value_barang_get->satuan == "Kilogram") {
         //                     $value_barang_get->jumlah = $this->kilogramToOunce($value_barang_get->jumlah); 
-        //                 } elseif ($value_barang_get->satuan == "Ton") {
-        //                     $value_barang_get->jumlah = $this->tonToOunce($value_barang_get->jumlah);
-        //                 }
+        //                 } 
         //             }elseif ($request->konversi_satuan == "Kilogram") {
-        //                 if ($value_barang_get->satuan == "Gram") {
+        //                 if ($value_barang_get->satuan == "pcs") {
         //                     $value_barang_get->jumlah = $this->gramToKilogram($value_barang_get->jumlah); 
-        //                 }elseif ($value_barang_get->satuan == "Ons") {
+        //                 }elseif ($value_barang_get->satuan == "lusin") {
         //                     $value_barang_get->jumlah = $this->ounceToKilogram($value_barang_get->jumlah); 
-        //                 } elseif ($value_barang_get->satuan == "Ton") {
-        //                     $value_barang_get->jumlah = $this->tonToKilogram($value_barang_get->jumlah);
-        //                 }
-        //             }elseif ($request->konversi_satuan == "Ton") {
-        //                 if ($value_barang_get->satuan == "Gram") {
-        //                     $value_barang_get->jumlah = $this->gramToTon($value_barang_get->jumlah);
-        //                 }elseif ($value_barang_get->satuan == "Ons") {
-        //                     $value_barang_get->jumlah = $this->ounceToTon($value_barang_get->jumlah);
-        //                 } elseif ($value_barang_get->satuan == "Kilogram") {
-        //                     $value_barang_get->jumlah = $this->kilogramToTon($value_barang_get->jumlah);
-        //                 }
-        //             } 
+        //                 } 
 
         //             $barang[$i] = [
         //                 "id" => $value_barang_get->barang_id,
@@ -359,19 +345,43 @@ class PerhitunganController extends Controller
         // die;
 
         // Evaluasi hasil trend
-        function MAD($yAktual, $yPrediksi, $n)
-        {
-            $jumlahAbsolutDeviation = ($yAktual - $yPrediksi) / $n;
+        function MAD($yAktual, $yPrediksi, $n){
+            $totalError = 0;
+
+            for ($i = 0; $i < $n; $i++){
+                $jumlahAbsolutDeviation = abs($yAktual - $yPrediksi);
+                $totalError += $jumlahAbsolutDeviation;
+            }
+
+            $jumlahAbsolutDeviation = $totalError / $n;
 
             return $jumlahAbsolutDeviation;
         }
+            //aku ganti rumus
+        //     $jumlahAbsolutDeviation = ($yAktual - $yPrediksi) / $n;
 
-        function MSE($yAktual, $yPrediksi, $n)
-        {
-            $jumlahAbsolutError = abs(pow($yAktual - $yPrediksi, 2) / $n);
+        //     return $jumlahAbsolutDeviation;
+        // }
+
+        function MSE($yAktual, $yPrediksi, $n){
+            $totalError = 0;
+
+            for ($i = 0; $i < $n; $i++){
+                $jumlahAbsolutError = pow(($yAktual - $yPrediksi), 2);
+                $totalError += $jumlahAbsolutError;
+            }
+            $jumlahAbsolutError = $totalError / $n;
 
             return $jumlahAbsolutError;
         }
+
+
+        // saya ganti rumus
+        // {
+        //     $jumlahAbsolutError = abs(pow($yAktual - $yPrediksi, 2) / $n);
+
+        //     return $jumlahAbsolutError;
+        // }
 
         // function MAPE($yAktual, $yPrediksi, $n)
         // {
@@ -379,17 +389,37 @@ class PerhitunganController extends Controller
 
         //     return $jumlahAbsolutePercentageError;
         // }
-        function MAPE($yAktual, $yPrediksi) {
+        function MAPE($yAktual, $yPrediksi, $n) {
             // Periksa jika yAktual adalah nol untuk menghindari pembagian oleh nol
-            if ($yAktual == 0) {
-                return 0;
+            $totalError = 0;
+
+            for ($i = 0; $i < $n; $i++){
+                $jumlahAbsolutePercentageError = abs(($yAktual - $yPrediksi) / $yAktual);
             }
-            
-            // Hitung kesalahan absolut persentase
-            $absolutePercentageError = abs(($yAktual - $yPrediksi) / $yAktual) * 100;
-        
-            return $absolutePercentageError;
+
+            $mape = ($totalError / $n) * 100;
+
+            return $jumlahAbsolutePercentageError;
         }
+
+        // contoh penggunaan fungsi
+        // $aktual = [100, 150, 200]; //contoh data aktual
+        // $prediksi = [110, 145, 210] // contoh data prediksi
+        // $n = count($aktual); //jumlah data
+
+        // $mape = hitungMAPE($aktual, $prediksi, $n);
+        // Echo "MAPE : " . $mape . "%";
+            // aku hijau ganti rumus
+            //    $totalError = 0;
+        //     if ($yAktual == 0) {
+        //         return 0;
+        //     }
+            
+        //     // Hitung kesalahan absolut persentase
+        //     $absolutePercentageError = abs(($yAktual - $yPrediksi) / $yAktual) * 100;
+        
+        //     return $absolutePercentageError;
+        // }
 
 
         for ($i = 0; $i < $nBulanPrediksi; $i++) {
@@ -407,54 +437,110 @@ class PerhitunganController extends Controller
 
     }
 
-    // Ton ke Kilogram
-    public function gramToOunce($satuan)
+    // pcs ke lusin
+    public function pcsToLusin($satuan)
     {
-        return $satuan * 0.03527396; // 1 gram = 0.03527396 ounces
-    }
-    public function gramToKilogram($satuan)
-    {
-        return $satuan / 1000; // 1 gram = 0.001 kilograms
-    }
-    public function gramToTon($satuan)
-    {
-        return $satuan / 1e6; // 1 gram = 1e-6 tons
-    }
-    public function ounceToGram($satuan)
-    {
-        return $satuan / 0.03527396; // 1 ounce = 28.3495 grams
-    }
-    public function ounceToKilogram($satuan)
-    {
-        return $satuan * 0.0283495; // 1 ounce = 0.0283495 kilograms
-    }
-    public function ounceToTon($satuan)
-    {
-        return $satuan * 2.83495e-5; // 1 ounce = 2.83495e-5 metric tons
-    }
-    public function kilogramToGram($satuan)
-    {
-        return $satuan * 1000; // 1 kilogram = 1000 grams
-    }
-    public function kilogramToOns($satuan)
-    {
-        return $satuan * 35.27396; // 1 kilogram = 35.27396 ons
-    }
-    public function kilogramToTon($satuan)
-    {
-        return $satuan / 1000; // 1 kilogram = 0.001 ton
-    }
-    public function tonToGram($satuan)
-    {
-        return $satuan * 1e6; // 1 ton = 1,000,000 grams
-    }
-    public function tonToOns($satuan)
-    {
-        return $satuan * 35273.96; // 1 metric ton = 35273.96 ons
-    }
-    public function tonToKilogram($satuan)
-    {
-        return $satuan * 1000; // 1 ton = 1000 kilograms
+        return $satuan / 12; // 1 lusin = 12 pcs
     }
 
+    public function lusinToPcs($satuan)
+    {
+        return $satuan * 12; // 1 lusin = 12 pcs
+    }
+
+    public function gramToPcs($satuan)
+    {
+        // Asumsi 1 gram = 1 pcs
+        return $satuan; // 1 gram = 1 pcs
+    }
+
+    public function gramToLusin($satuan)
+    {
+        // Asumsi 1 gram = 1 pcs
+        return $satuan / 12; // 1 lusin = 12 pcs
+    }
+
+    public function pcsToGram($satuan)
+    {
+        // Asumsi 1 pcs = 1 gram
+        return $satuan; // 1 pcs = 1 gram
+    }
+
+    public function lusinToGram($satuan)
+    {
+        // Asumsi 1 lusin = 12 gram
+        return $satuan * 12; // 1 lusin = 12 pcs
+    }
+
+    public function ounceToPcs($satuan)
+    {
+        // Asumsi 1 ounce = 28.3495 pcs (28.3495 gram)
+        return $satuan * 28.3495; // 1 ounce = 28.3495 pcs
+    }
+
+    public function ounceToLusin($satuan)
+    {
+        // Asumsi 1 ounce = 28.3495 pcs (28.3495 gram)
+        return ($satuan * 28.3495) / 12; // 1 ounce = 28.3495 pcs
+    }
+
+    public function pcsToOunce($satuan)
+    {
+        // Asumsi 1 pcs = 1/28.3495 ounce
+        return $satuan / 28.3495; // 1 pcs = 1/28.3495 ounce
+    }
+
+    public function lusinToOunce($satuan)
+    {
+        // Asumsi 1 lusin = 12 pcs
+        return ($satuan * 12) / 28.3495; // 1 lusin = 12 pcs
+    }
+
+    public function kilogramToPcs($satuan)
+    {
+        // Asumsi 1 kilogram = 1000 pcs (1000 gram)
+        return $satuan * 1000; // 1 kilogram = 1000 pcs
+    }
+
+    public function kilogramToLusin($satuan)
+    {
+        // Asumsi 1 kilogram = 1000 pcs (1000 gram)
+        return ($satuan * 1000) / 12; // 1 kilogram = 83.3333 lusin
+    }
+
+    public function pcsToKilogram($satuan)
+    {
+        // Asumsi 1 pcs = 1 gram
+        return $satuan / 1000; // 1 pcs = 0.001 kilogram
+    }
+
+    public function lusinToKilogram($satuan)
+    {
+        // Asumsi 1 lusin = 12 gram
+        return ($satuan * 12) / 1000; // 1 lusin = 0.012 kilogram
+    }
+
+    public function tonToPcs($satuan)
+    {
+        // Asumsi 1 ton = 1,000,000 pcs (1,000,000 gram)
+        return $satuan * 1e6; // 1 ton = 1,000,000 pcs
+    }
+
+    public function tonToLusin($satuan)
+    {
+        // Asumsi 1 ton = 1,000,000 pcs (1,000,000 gram)
+        return ($satuan * 1e6) / 12; // 1 ton = 83,333.3333 lusin
+    }
+
+    public function pcsToTon($satuan)
+    {
+        // Asumsi 1 pcs = 1 gram
+        return $satuan / 1e6; // 1 pcs = 1e-6 ton
+    }
+
+    public function lusinToTon($satuan)
+    {
+        // Asumsi 1 lusin = 12 gram
+        return ($satuan * 12) / 1e6; // 1 lusin = 1.2e-5 ton
+    }
 }

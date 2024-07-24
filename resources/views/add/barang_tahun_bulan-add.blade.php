@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'SPK | Tambah Relasi')
+@section('title', 'Tambah Relasi')
 @section('content')
 
     <!-- [ Main Content ] start -->

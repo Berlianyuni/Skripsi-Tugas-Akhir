@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'KMEANS | Edit Akun')
+@section('title', 'Edit Akun')
 @section('content')
 
     <!-- [ Main Content ] start -->

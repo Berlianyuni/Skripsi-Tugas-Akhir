@@ -26,7 +26,7 @@ class BarangTahunBulanController extends Controller
         $barang = Barang::with(['barang_tahun_bulan.tahun', 'barang_tahun_bulan.bulan'])->get();
         $tahun = Tahun::with(['barang_tahun_bulan.barang'])->get();
         $bulan = Bulan::with(['barang_tahun_bulan.barang'])->get();
-        $satuan = ['gram', 'Ons', 'Kilogram', 'Ton'];
+        $satuan = ['pcs', 'lusin'];
 
         return view('add.barang_tahun_bulan-add', ['barang' => $barang, 'bulan' => $bulan, 'tahun' => $tahun, 'satuan' => $satuan]);
     }
